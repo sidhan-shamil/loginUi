@@ -1,112 +1,78 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import React, { Component } from 'react';
+import { View, StyleSheet, Text, Image, TextInput, TouchableHighlight } from 'react-native'
 
-import React from 'react';
-import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+export default class App extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Image source={require('./assets/images/logo.jpg')} style={styles.logo}></Image>
+          <TextInput style={styles.input} placeholder= 'Email' placeholderTextColor={'#111'}></TextInput>
+          <TextInput style={styles.input} placeholder= 'Password' placeholderTextColor={'#111'} secureTextEntry={true}></TextInput>
+          <View style= {{flexDirection: 'row'}}>
+            <TouchableHighlight style= {styles.btn}>
+              <Text style={{color: '#fff'}}>Login</Text>
+            </TouchableHighlight>
+            <TouchableHighlight style= {styles.btn2}>
+              <Text style={{color: '#fff'}}>Register</Text>
+            </TouchableHighlight>
+          </View>
+          <TouchableHighlight style={styles.btnFb}>
+            <Text style= {{color: '#fff'}}>Login with facebook</Text>
+          </TouchableHighlight>
+      </View>
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
-
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
+    )
+  }
+}
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff'
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  logo: {
+    width: 100,
+    height: 100
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  input: {
+    width: '80%',
+    height: 55,
+    backgroundColor: '#fff',
+    color: '#111',
+    borderColor: '#458cff',
+    borderBottomWidth: 2,
+    marginTop: 20,
+    paddingLeft: 20,
+    opacity: 0.7
   },
-  highlight: {
-    fontWeight: '700',
+  btn: {
+    width: '40%',
+    height: 45,
+    backgroundColor: '#4bb543',
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 20,
+    marginRight: 5
   },
+  btn2: {
+    width: '40%',
+    height: 45,
+    backgroundColor: '#cf142b',
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 20
+  },
+  btnFb: {
+    backgroundColor: '#3b5998',
+    width: '80%',
+    height: 45,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 20
+  }
 });
-
-export default App;
